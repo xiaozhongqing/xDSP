@@ -8,33 +8,39 @@
 #include <string.h>
 
 
-//using namespace std;
-/*
 int main(int argc, char** argv)
 {
-	setvbuf(stdout, 0, _IONBF, 0);
-	fflush(stdout);
-
-	int sock = -1;
-	if(((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
+	int sock;
+	if((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
 	{
-		printf("ERROR: socket failed");
+		printf("ERROR: socket failed\n");
 		return -1;
 	}
 	const int opt = 1;
-	int nb = 0;
-	nb = setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (char*)&opt, sizeof(opt));
+	int nb = setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (char*)&opt, sizeof(opt));
 	if(nb == -1)
 	{
-		printf("ERROR: setsockopt failt");
+		printf("ERROR: setsockopt failed\n");
 		return -1;
 	}
-	
-	return 0;
-}
-*/
-int main(int argc, char** argv)
-{
-	printf("dddddddddddddd\n");
+	struct sockaddr_in addrto;
+	bzero(&addrto, sizeof(struct sockaddr_in));
+	addrto.sin_family = AF_INET;
+	addrto.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+	addrto.sin_port = htons(6000);
+	int nlen = sizeof(addrto);
+	while(1)
+	{
+		char msg[] = {"adfsdfsdfsdf"};
+		int ret = sendto(sock, msg, strlen(msg), 0, (struct sockaddr*)&addrto, nlen);
+		if(ret < 0)
+		{
+			printf("ERROR: sendto failed\n");
+		}
+		else
+		{
+			printf("OK....\n");
+		}
+	}
 	return 0;
 }
