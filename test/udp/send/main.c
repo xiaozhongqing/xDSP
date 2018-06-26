@@ -7,6 +7,7 @@
 #include <arpa/inet.h>
 #include <string.h>
 
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -15,7 +16,7 @@ int main(int argc, char** argv)
 	fflush(stdout);
 
 	int sock = -1;
-	if((sock = socket(AF_INET, SOCK_DGRAM, 0))
+	if(((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
 	{
 		printf("ERROR: socket failed");
 		return -1;
