@@ -8,8 +8,8 @@
 #include <string.h>
 
 
-using namespace std;
-
+//using namespace std;
+/*
 int main(int argc, char** argv)
 {
 	setvbuf(stdout, 0, _IONBF, 0);
@@ -30,5 +30,11 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	
+	return 0;
+}
+*/
+int main(int argc, char** argv)
+{
+	printf("dddddddddddddd\n");
 	return 0;
 }
