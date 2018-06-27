@@ -29,18 +29,22 @@ int main(int argc, char** argv)
 	addrto.sin_addr.s_addr = htonl(INADDR_BROADCAST);
 	addrto.sin_port = htons(6000);
 	int nlen = sizeof(addrto);
+	printf("INFO: udp send start....\n");
 	while(1)
 	{
 		char msg[] = {"adfsdfsdfsdf"};
 		int ret = sendto(sock, msg, strlen(msg), 0, (struct sockaddr*)&addrto, nlen);
 		if(ret < 0)
 		{
-			printf("ERROR: sendto failed\n");
+			printf("ERROR: sendto failed(%d)\n", ret);
+			break;
 		}
 		else
 		{
 			printf("OK....\n");
 		}
+		sleep(100);
 	}
+	printf("INFO: udp send exit ....\n");
 	return 0;
 }

@@ -1,4 +1,4 @@
-TARGET = udpsend
+TARGET = udprecv
 FLAG = -O2 -Wall
 INC_PATH =
 LIB_PATH =

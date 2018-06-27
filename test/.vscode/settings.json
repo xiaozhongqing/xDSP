@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "string.h": "c",
+        "ether.h": "c",
+        "if_ether.h": "c",
+        "sockios.h": "c"
+    }
+}
